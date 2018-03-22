@@ -53,16 +53,17 @@ componentDidMount(){
               <h3>Loading</h3>
             )
           }
-          {
             <div>
-            (this.state.clusterInfo.length>0)?
-            this.state.clusterInfo.map((item)=>{
-              return <li>User {item}</li>
-            }):(
-              <h3>No Other User than You</h3>
-            )
+            {
+              this.state.clusterInfo.length>0?
+              this.state.clusterInfo.map((item)=>{
+                return <li>User {item}</li>
+                })
+              :(
+                <h3>No Other User than You</h3>
+              )
+            }
             </div>
-          }
         </div>
       </div>
     );
