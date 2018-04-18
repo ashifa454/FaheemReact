@@ -2,11 +2,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Home.css';
+//CLIENT VERSION FOR SOCKET
 import openSocket from 'socket.io-client';
 type Props = {};
+//DEPENDECIES
 import { Icon, Input,Header,Grid,Image,Message,Form,Segment,List,Label,Popup } from 'semantic-ui-react';
 import bigInt from 'big-integer'
+//CONNECT TO SOCKET ON SERVER PORT
 const socket=openSocket('http://localhost:8003');
+
 export default class Home extends Component<Props> {
   props: Props;
   constructor(){
@@ -44,6 +48,7 @@ _calculateMeta=()=>{
   }else{
     var M=parseInt(this.state.message,2);
     var K=Math.floor(Math.random()*100+1);
+    //PVT[0] IS X COORDINATE ON ELLIPTIC CURVE
     var Q=bigInt(this.state.userConfig.KPAK).multiply(bigInt(this.state.userConfig.PVT[0]))
     this.setState({
       C1:bigInt(this.state.userConfig.PVT[0]).multiply(K),
